@@ -165,3 +165,18 @@ class MeetingActionTrackerApiTests(TestCase):
         task_titles = [t['title'] for t in task_list]
         self.assertIn('Finalize Terraform IAM security policies', task_titles)
         self.assertNotIn('Other task', task_titles)
+
+    # 11. Deterministic analysis fallback when AI provider is not configured
+    def test_analyze_meeting_deterministic_fallback(self):
+        m = Meeting.objects.create(
+            title='Product Kickoff',
+            notes='Alice will deploy the staging API. Bob must review the database schema. Decision: Approved Redis caching. Risk: Third-party API quotas.'
+        )
+        response = self.client.post(f'/api/meetings/{m.id}/analyze/')
+        self.assertEqual(response.status_code, 200)
+        m.refresh_from_db()
+        self.assertEqual(m.analysis_status, 'analyzed')
+        self.assertEqual(m.review_status, 'needs_review')
+        self.assertGreaterEqual(m.tasks.count(), 2)
+        self.assertEqual(m.decisions.count(), 1)
+        self.assertEqual(m.risks.count(), 1)
