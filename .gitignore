@@ -10,6 +10,14 @@ db.sqlite3-journal
 media/
 staticfiles/
 
+# Virtual Environments
+.venv/
+venv/
+env/
+ENV/
+env.bak/
+venv.bak/
+
 # Node & Frontend
 node_modules/
 dist/

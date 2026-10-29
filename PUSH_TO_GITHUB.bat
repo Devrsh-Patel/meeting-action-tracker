@@ -6,7 +6,7 @@ echo ======================================================================
 echo Repository: https://github.com/Devrsh-Patel/meeting-action-tracker.git
 echo.
 
-set "PATH=C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\TeamFoundation\Team Explorer\Git\cmd;C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\TeamFoundation\Team Explorer\Git\mingw64\bin;%PATH%"
+set "PATH=D:\Scalezix Project\.git-bin\cmd;C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\TeamFoundation\Team Explorer\Git\cmd;C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\TeamFoundation\Team Explorer\Git\mingw64\bin;%PATH%"
 cd /d "%~dp0"
 
 echo Git Version:
@@ -35,3 +35,4 @@ if %ERRORLEVEL% equ 0 (
     echo ======================================================================
 )
 pause
+
