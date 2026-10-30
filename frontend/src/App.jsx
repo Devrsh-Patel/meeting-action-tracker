@@ -659,56 +659,58 @@ export function App() {
       
       {/* ── Scalezix Topbar Header ────────────────────────────────────────── */}
       <header className="bg-slate-900 border-b border-slate-800 sticky top-0 z-40 text-white shadow-sm">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-16">
+        <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-between h-16 gap-2">
             
             {/* Brand Logo & Name */}
-            <div className="flex items-center gap-3">
-              <div className="w-9 h-9 rounded-lg bg-gradient-to-br from-emerald-400 to-teal-600 flex items-center justify-center shadow-lg shadow-emerald-500/20">
-                <FileText className="w-5 h-5 text-slate-950 font-bold" />
+            <div className="flex items-center gap-2 sm:gap-3 min-w-0">
+              <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-lg bg-gradient-to-br from-emerald-400 to-teal-600 flex items-center justify-center shadow-lg shadow-emerald-500/20 flex-shrink-0">
+                <FileText className="w-4 h-4 sm:w-5 sm:h-5 text-slate-950 font-bold" />
               </div>
-              <div>
-                <div className="flex items-center gap-2">
-                  <span className="font-extrabold text-lg tracking-tight text-white font-sans">
+              <div className="min-w-0">
+                <div className="flex items-center gap-1.5 sm:gap-2">
+                  <span className="font-extrabold text-base sm:text-lg tracking-tight text-white font-sans">
                     SCALEZIX
                   </span>
-                  <span className="text-[10px] font-bold uppercase tracking-wider bg-emerald-500/10 text-emerald-400 px-2 py-0.5 rounded border border-emerald-500/30">
+                  <span className="text-[9px] sm:text-[10px] font-bold uppercase tracking-wider bg-emerald-500/10 text-emerald-400 px-1.5 sm:px-2 py-0.5 rounded border border-emerald-500/30 whitespace-nowrap">
                     Meeting Tracker
                   </span>
                 </div>
-                <p className="text-[11px] text-slate-400 -mt-1 hidden sm:block">
+                <p className="text-[11px] text-slate-400 -mt-1 hidden sm:block truncate">
                   Client Meeting-to-Action Tracker & Accountability Engine
                 </p>
               </div>
             </div>
 
             {/* Right Controls */}
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-2 sm:gap-3 flex-shrink-0">
               <div
-                className={`flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium border ${
+                className={`flex items-center gap-1 sm:gap-1.5 px-2 sm:px-2.5 py-1 rounded-full text-[11px] sm:text-xs font-medium border ${
                   isBackendConnected
                     ? 'bg-emerald-950/40 text-emerald-400 border-emerald-800/50'
                     : 'bg-amber-950/40 text-amber-400 border-amber-800/50'
                 }`}
               >
-                <Radio className={`w-3 h-3 ${isBackendConnected ? 'animate-pulse text-emerald-400' : 'text-amber-400'}`} />
-                <span>{isBackendConnected ? 'API Live (Django 6.0)' : 'Standalone Preview'}</span>
+                <Radio className={`w-3 h-3 ${isBackendConnected ? 'animate-pulse text-emerald-400' : 'text-amber-400'} flex-shrink-0`} />
+                <span className="hidden md:inline">{isBackendConnected ? 'API Live (Django 6.0)' : 'Standalone Preview'}</span>
+                <span className="md:hidden">{isBackendConnected ? 'Live' : 'Preview'}</span>
               </div>
 
               {currentView === 'dashboard' ? (
                 <button
                   onClick={() => setCurrentView('new_meeting')}
-                  className="btn-primary text-xs"
+                  className="btn-primary text-xs py-1.5 sm:py-2 px-2.5 sm:px-3.5"
                 >
-                  <Plus className="w-4 h-4" />
-                  <span>New Meeting</span>
+                  <Plus className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
+                  <span className="hidden xs:inline">New Meeting</span>
+                  <span className="xs:hidden">New</span>
                 </button>
               ) : (
                 <button
                   onClick={() => setCurrentView('dashboard')}
-                  className="btn-secondary text-xs flex items-center gap-1.5"
+                  className="btn-secondary text-xs flex items-center gap-1.5 py-1.5 sm:py-2 px-2.5 sm:px-3.5"
                 >
-                  <ArrowLeft className="w-4 h-4" />
+                  <ArrowLeft className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
                   <span>Back to Meetings</span>
                 </button>
               )}
@@ -719,18 +721,18 @@ export function App() {
       </header>
 
       {/* ── Main Container ────────────────────────────────────────────────── */}
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
+      <main className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-5 sm:py-8 space-y-5 sm:space-y-8">
         
         {/* Banner */}
-        <div className="scalezix-card p-6 md:p-8 bg-gradient-to-r from-slate-900 via-slate-850 to-slate-900 text-white border-slate-800 relative overflow-hidden shadow-xl">
+        <div className="scalezix-card p-4 sm:p-6 md:p-8 bg-gradient-to-r from-slate-900 via-slate-850 to-slate-900 text-white border-slate-800 relative overflow-hidden shadow-xl">
           <div className="relative z-10 max-w-3xl">
-            <span className="text-xs font-bold uppercase tracking-wider bg-emerald-500/20 text-emerald-400 border border-emerald-500/40 px-2.5 py-0.5 rounded-full inline-block mb-3">
+            <span className="text-[10px] sm:text-xs font-bold uppercase tracking-wider bg-emerald-500/20 text-emerald-400 border border-emerald-500/40 px-2.5 py-0.5 rounded-full inline-block mb-2 sm:mb-3">
               Scalezix Accountability Suite
             </span>
-            <h1 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-white">
+            <h1 className="text-xl sm:text-2xl md:text-3xl font-extrabold tracking-tight text-white">
               Client Meeting-to-Action Tracker
             </h1>
-            <p className="mt-2 text-sm text-slate-300 leading-relaxed">
+            <p className="mt-1.5 sm:mt-2 text-xs sm:text-sm text-slate-300 leading-relaxed">
               Transform rough meeting notes into accountable next steps, verified decisions, and client-ready task lists. Enforces strict factual preservation with zero hallucinated owners or deadlines.
             </p>
           </div>
@@ -739,40 +741,40 @@ export function App() {
 
         {/* Global Alert Messages */}
         {error && (
-          <div className="p-3.5 bg-red-50 border border-red-200 rounded-lg text-xs text-red-700 flex items-center justify-between animate-in fade-in">
-            <div className="flex items-center gap-2">
-              <AlertCircle className="w-4 h-4 text-red-600 flex-shrink-0" />
-              <span>{error}</span>
+          <div className="p-3 sm:p-3.5 bg-red-50 border border-red-200 rounded-lg text-xs text-red-700 flex items-start sm:items-center justify-between gap-2 animate-in fade-in">
+            <div className="flex items-start sm:items-center gap-2 min-w-0">
+              <AlertCircle className="w-4 h-4 text-red-600 flex-shrink-0 mt-0.5 sm:mt-0" />
+              <span className="break-words">{error}</span>
             </div>
-            <button onClick={() => setError('')} className="text-red-500 hover:text-red-700">✕</button>
+            <button onClick={() => setError('')} className="text-red-500 hover:text-red-700 p-1 -mr-1 flex-shrink-0">✕</button>
           </div>
         )}
         {successMessage && (
-          <div className="p-3.5 bg-emerald-50 border border-emerald-200 rounded-lg text-xs text-emerald-800 flex items-center justify-between animate-in fade-in">
-            <div className="flex items-center gap-2">
-              <Check className="w-4 h-4 text-emerald-600 flex-shrink-0" />
-              <span>{successMessage}</span>
+          <div className="p-3 sm:p-3.5 bg-emerald-50 border border-emerald-200 rounded-lg text-xs text-emerald-800 flex items-start sm:items-center justify-between gap-2 animate-in fade-in">
+            <div className="flex items-start sm:items-center gap-2 min-w-0">
+              <Check className="w-4 h-4 text-emerald-600 flex-shrink-0 mt-0.5 sm:mt-0" />
+              <span className="break-words">{successMessage}</span>
             </div>
-            <button onClick={() => setSuccessMessage('')} className="text-emerald-600 hover:text-emerald-800">✕</button>
+            <button onClick={() => setSuccessMessage('')} className="text-emerald-600 hover:text-emerald-800 p-1 -mr-1 flex-shrink-0">✕</button>
           </div>
         )}
 
         {/* Executive KPI Stats Bar */}
-        <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        <section className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
           {stats.map((s) => {
             const Icon = s.icon;
             return (
-              <div key={s.label} className="scalezix-card p-5 relative overflow-hidden group">
-                <div className="flex items-center justify-between">
-                  <span className="text-xs font-bold uppercase tracking-wider text-slate-500">
+              <div key={s.label} className="scalezix-card p-3.5 sm:p-5 relative overflow-hidden group">
+                <div className="flex items-center justify-between gap-1">
+                  <span className="text-[10px] sm:text-xs font-bold uppercase tracking-wider text-slate-500 line-clamp-1">
                     {s.label}
                   </span>
-                  <div className={`w-8 h-8 rounded-lg ${s.bg} flex items-center justify-center ${s.color}`}>
-                    <Icon className="w-4 h-4" />
+                  <div className={`w-7 h-7 sm:w-8 sm:h-8 rounded-lg ${s.bg} flex items-center justify-center ${s.color} flex-shrink-0`}>
+                    <Icon className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
                   </div>
                 </div>
-                <div className="mt-2 flex items-baseline gap-2">
-                  <span className={`text-3xl font-extrabold font-mono ${s.color}`}>
+                <div className="mt-1 sm:mt-2 flex items-baseline gap-2">
+                  <span className={`text-2xl sm:text-3xl font-extrabold font-mono ${s.color}`}>
                     {s.value}
                   </span>
                 </div>
@@ -783,31 +785,31 @@ export function App() {
         </section>
 
         {currentView === 'new_meeting' ? (
-          <div className="max-w-4xl mx-auto space-y-6 animate-in fade-in duration-200">
+          <div className="max-w-4xl mx-auto space-y-5 sm:space-y-6 animate-in fade-in duration-200">
             {/* Top Navigation & Presets Bar */}
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-slate-200">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-4 pb-4 border-b border-slate-200">
               <button
                 type="button"
                 onClick={() => setCurrentView('dashboard')}
-                className="btn-secondary text-xs flex items-center gap-1.5 self-start"
+                className="btn-secondary text-xs flex items-center gap-1.5 self-start py-2 px-3"
               >
                 <ArrowLeft className="w-3.5 h-3.5" />
                 <span>Back to Meeting Dashboard</span>
               </button>
 
-              <div className="flex items-center gap-2">
+              <div className="flex flex-wrap items-center gap-2">
                 <span className="text-xs text-slate-500 font-medium">Quick Presets:</span>
                 <button
                   type="button"
                   onClick={() => loadSamplePreset(0)}
-                  className="btn-secondary text-xs hover:border-emerald-500 transition-colors"
+                  className="btn-secondary text-[11px] sm:text-xs hover:border-emerald-500 transition-colors py-1.5 px-2.5 sm:px-3"
                 >
                   Healthcare Architecture (Novacare)
                 </button>
                 <button
                   type="button"
                   onClick={() => loadSamplePreset(1)}
-                  className="btn-secondary text-xs hover:border-emerald-500 transition-colors"
+                  className="btn-secondary text-[11px] sm:text-xs hover:border-emerald-500 transition-colors py-1.5 px-2.5 sm:px-3"
                 >
                   E-Commerce Sync (Apex)
                 </button>
@@ -815,21 +817,21 @@ export function App() {
             </div>
 
             {/* Dedicated New Meeting Intake Page Card */}
-            <div className="scalezix-card bg-white p-6 sm:p-8 shadow-lg border border-slate-200">
-              <div className="mb-6 pb-4 border-b border-slate-100">
+            <div className="scalezix-card bg-white p-4 sm:p-6 md:p-8 shadow-lg border border-slate-200">
+              <div className="mb-5 sm:mb-6 pb-4 border-b border-slate-100">
                 <div className="flex items-center gap-2.5 mb-1.5">
-                  <div className="w-8 h-8 rounded-lg bg-emerald-100 flex items-center justify-center">
+                  <div className="w-8 h-8 rounded-lg bg-emerald-100 flex items-center justify-center flex-shrink-0">
                     <Plus className="w-5 h-5 text-emerald-600" />
                   </div>
-                  <h2 className="text-xl font-extrabold text-slate-900">Create & Ingest New Meeting Record</h2>
+                  <h2 className="text-lg sm:text-xl font-extrabold text-slate-900">Create & Ingest New Meeting Record</h2>
                 </div>
                 <p className="text-xs text-slate-500">
                   Paste verbatim client transcripts, meeting minutes, or bullet notes. The engine extracts verifiable action items without hallucinating unassigned owners or deadlines.
                 </p>
               </div>
 
-              <form onSubmit={createMeeting} className="space-y-6">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <form onSubmit={createMeeting} className="space-y-4 sm:space-y-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4">
                   <div>
                     <label className="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">
                       Meeting Title *
@@ -856,7 +858,7 @@ export function App() {
                   </div>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4">
                   <div>
                     <label className="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">
                       Meeting Date
@@ -904,7 +906,7 @@ export function App() {
                     </span>
                   </div>
                   <textarea
-                    rows={10}
+                    rows={8}
                     className="input-field font-sans text-xs leading-relaxed"
                     placeholder="Paste verbatim transcript, Zoom recording notes, or client meeting summary..."
                     value={newMeeting.notes}
@@ -916,18 +918,18 @@ export function App() {
                   </p>
                 </div>
 
-                <div className="pt-4 border-t border-slate-100 flex items-center justify-end gap-3">
+                <div className="pt-4 border-t border-slate-100 flex flex-col-reverse sm:flex-row items-stretch sm:items-center justify-end gap-2.5 sm:gap-3">
                   <button
                     type="button"
                     onClick={() => setCurrentView('dashboard')}
-                    className="btn-secondary text-xs"
+                    className="btn-secondary text-xs w-full sm:w-auto text-center"
                   >
                     Cancel
                   </button>
                   <button
                     type="submit"
                     disabled={loading}
-                    className="btn-primary text-xs flex items-center gap-1.5"
+                    className="btn-primary text-xs flex items-center justify-center gap-1.5 w-full sm:w-auto"
                   >
                     <Plus className="w-4 h-4" />
                     <span>{loading ? 'Creating...' : 'Create & Ingest Meeting'}</span>
@@ -939,13 +941,13 @@ export function App() {
         ) : (
           /* Two-Column Workspace Layout */
           <div className="space-y-6">
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 sm:gap-6 items-start">
             
             {/* Left Column: Meeting Switcher + Quick Actions (4 cols) */}
             <div className="lg:col-span-4 space-y-4">
               
               {/* Meeting History Switcher */}
-              <div className="scalezix-card p-5 border-slate-200">
+              <div className="scalezix-card p-4 sm:p-5 border-slate-200">
                 <div className="flex items-center justify-between pb-3 mb-3 border-b border-slate-100">
                   <h3 className="text-xs font-bold uppercase tracking-wider text-slate-700 flex items-center gap-1.5">
                     <Calendar className="w-3.5 h-3.5 text-slate-400" />
@@ -961,7 +963,7 @@ export function App() {
                   </button>
                 </div>
 
-                <div className="space-y-2 max-h-60 overflow-y-auto pr-1">
+                <div className="space-y-2 max-h-64 sm:max-h-72 overflow-y-auto pr-1">
                   {meetings.map((m) => {
                     const isSelected = selectedMeeting?.id === m.id;
                     return (
@@ -975,12 +977,12 @@ export function App() {
                         }`}
                       >
                         <div className="flex items-start justify-between gap-1.5">
-                          <span className="font-bold line-clamp-1 text-slate-900">{m.title}</span>
+                          <span className="font-bold line-clamp-1 text-slate-900 break-words">{m.title}</span>
                           <ChevronRight className={`w-3.5 h-3.5 flex-shrink-0 mt-0.5 ${isSelected ? 'text-emerald-600' : 'text-slate-400'}`} />
                         </div>
-                        <div className="flex items-center gap-2 mt-1.5 text-[11px] text-slate-500">
-                          <Building2 className="w-3 h-3 text-slate-400" />
-                          <span className="font-medium text-slate-700 truncate max-w-[120px]">{m.client_name || 'Internal'}</span>
+                        <div className="flex flex-wrap items-center gap-1.5 sm:gap-2 mt-1.5 text-[11px] text-slate-500">
+                          <Building2 className="w-3 h-3 text-slate-400 flex-shrink-0" />
+                          <span className="font-medium text-slate-700 truncate max-w-[130px]">{m.client_name || 'Internal'}</span>
                           <span>•</span>
                           <span>{m.meeting_date || 'No date'}</span>
                         </div>
@@ -996,7 +998,7 @@ export function App() {
               </div>
 
               {/* Sample Presets Card */}
-              <div className="scalezix-card p-4 bg-slate-50/80 border-dashed border-slate-200">
+              <div className="scalezix-card p-3.5 sm:p-4 bg-slate-50/80 border-dashed border-slate-200">
                 <div className="flex items-center justify-between mb-2">
                   <h4 className="text-[11px] font-bold uppercase tracking-wider text-slate-600">
                     Benchmark Presets
@@ -1012,8 +1014,8 @@ export function App() {
                     }}
                     className="btn-secondary text-xs text-left w-full justify-between flex items-center py-2 px-3 hover:border-emerald-400 group"
                   >
-                    <span className="font-medium text-slate-800">Healthcare Architecture (Novacare)</span>
-                    <span className="text-[10px] text-emerald-600 font-bold group-hover:translate-x-0.5 transition-transform">Load →</span>
+                    <span className="font-medium text-slate-800 truncate mr-2">Healthcare Architecture (Novacare)</span>
+                    <span className="text-[10px] text-emerald-600 font-bold group-hover:translate-x-0.5 transition-transform flex-shrink-0">Load →</span>
                   </button>
                   <button
                     type="button"
@@ -1023,8 +1025,8 @@ export function App() {
                     }}
                     className="btn-secondary text-xs text-left w-full justify-between flex items-center py-2 px-3 hover:border-emerald-400 group"
                   >
-                    <span className="font-medium text-slate-800">E-Commerce Launch (Apex)</span>
-                    <span className="text-[10px] text-emerald-600 font-bold group-hover:translate-x-0.5 transition-transform">Load →</span>
+                    <span className="font-medium text-slate-800 truncate mr-2">E-Commerce Launch (Apex)</span>
+                    <span className="text-[10px] text-emerald-600 font-bold group-hover:translate-x-0.5 transition-transform flex-shrink-0">Load →</span>
                   </button>
                 </div>
               </div>
@@ -1035,10 +1037,10 @@ export function App() {
           <div className="lg:col-span-8 space-y-6">
             
             {/* Meeting Workbench Header Card */}
-            <div className="scalezix-card p-6 border-slate-200">
+            <div className="scalezix-card p-4 sm:p-6 border-slate-200">
               <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-4 pb-4 border-b border-slate-100">
-                <div>
-                  <div className="flex items-center gap-2 mb-1.5">
+                <div className="min-w-0">
+                  <div className="flex flex-wrap items-center gap-2 mb-1.5">
                     <span className="text-xs font-mono font-bold bg-slate-100 text-slate-700 px-2 py-0.5 rounded border border-slate-200">
                       Active Workspace
                     </span>
@@ -1049,36 +1051,36 @@ export function App() {
                     </span>
                   </div>
 
-                  <h2 className="text-xl sm:text-2xl font-extrabold text-slate-900 tracking-tight">
+                  <h2 className="text-lg sm:text-xl md:text-2xl font-extrabold text-slate-900 tracking-tight break-words">
                     {selectedMeeting?.title || 'No Meeting Selected'}
                   </h2>
 
-                  <div className="mt-2 flex flex-wrap items-center gap-4 text-xs text-slate-600">
+                  <div className="mt-2 flex flex-wrap items-center gap-2.5 sm:gap-4 text-xs text-slate-600">
                     <div className="flex items-center gap-1.5">
-                      <Building2 className="w-3.5 h-3.5 text-slate-400" />
+                      <Building2 className="w-3.5 h-3.5 text-slate-400 flex-shrink-0" />
                       <span className="font-semibold text-slate-800">{selectedMeeting?.client_name || 'Internal'}</span>
                     </div>
                     {selectedMeeting?.meeting_date && (
                       <div className="flex items-center gap-1.5">
-                        <Calendar className="w-3.5 h-3.5 text-slate-400" />
+                        <Calendar className="w-3.5 h-3.5 text-slate-400 flex-shrink-0" />
                         <span>{selectedMeeting.meeting_date}</span>
                       </div>
                     )}
                     {selectedMeeting?.participants && (
                       <div className="flex items-center gap-1.5">
-                        <User className="w-3.5 h-3.5 text-slate-400" />
-                        <span className="text-slate-600 truncate max-w-xs">{selectedMeeting.participants}</span>
+                        <User className="w-3.5 h-3.5 text-slate-400 flex-shrink-0" />
+                        <span className="text-slate-600 break-words line-clamp-1">{selectedMeeting.participants}</span>
                       </div>
                     )}
                   </div>
                 </div>
 
                 {/* Top Action Buttons */}
-                <div className="flex flex-wrap items-center gap-2">
+                <div className="flex flex-wrap items-center gap-2 w-full sm:w-auto">
                   <button
                     onClick={analyzeMeeting}
                     disabled={loading}
-                    className="btn-ai text-xs"
+                    className="btn-ai text-xs flex-1 sm:flex-initial py-2 sm:py-1.5 px-3"
                     title="Extract structured summary, decisions, action items, and risks"
                   >
                     <Sparkles className="w-3.5 h-3.5 text-cyan-200" />
@@ -1087,7 +1089,7 @@ export function App() {
 
                   <button
                     onClick={exportCsv}
-                    className="btn-secondary text-xs"
+                    className="btn-secondary text-xs flex-1 sm:flex-initial py-2 sm:py-1.5 px-3"
                     title="Download tasks as CSV spreadsheet"
                   >
                     <FileSpreadsheet className="w-3.5 h-3.5 text-emerald-600" />
@@ -1096,7 +1098,7 @@ export function App() {
 
                   <button
                     onClick={exportMarkdownReport}
-                    className="btn-secondary text-xs"
+                    className="btn-secondary text-xs flex-1 sm:flex-initial py-2 sm:py-1.5 px-3"
                     title="Download Markdown meeting report"
                   >
                     <Download className="w-3.5 h-3.5 text-sky-600" />
@@ -1106,37 +1108,37 @@ export function App() {
               </div>
 
               {/* 3 Overview Info Cards: Summary, Decisions, Risks */}
-              <div className="mt-6 grid grid-cols-1 md:grid-cols-3 gap-4">
+              <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
                 
                 {/* 1. Executive Summary */}
-                <div className="p-4 rounded-xl border border-slate-200 bg-slate-50/60">
+                <div className="p-3.5 sm:p-4 rounded-xl border border-slate-200 bg-slate-50/60 sm:col-span-2 lg:col-span-1">
                   <div className="flex items-center justify-between mb-2">
                     <span className="text-xs font-bold uppercase tracking-wider text-slate-500 flex items-center gap-1">
                       <FileText className="w-3.5 h-3.5 text-slate-400" />
                       Executive Summary
                     </span>
                   </div>
-                  <p className="text-xs text-slate-700 leading-relaxed">
+                  <p className="text-xs text-slate-700 leading-relaxed break-words">
                     {selectedMeeting?.summary || 'No summary generated yet. Click "Analyze Meeting" to process the notes.'}
                   </p>
                 </div>
 
                 {/* 2. Decisions Captured */}
-                <div className="p-4 rounded-xl border border-slate-200 bg-slate-50/60">
+                <div className="p-3.5 sm:p-4 rounded-xl border border-slate-200 bg-slate-50/60">
                   <div className="flex items-center justify-between mb-2">
                     <span className="text-xs font-bold uppercase tracking-wider text-slate-500 flex items-center gap-1">
                       <ShieldCheck className="w-3.5 h-3.5 text-emerald-600" />
                       Decisions ({(selectedMeeting?.decisions ?? []).length})
                     </span>
                   </div>
-                  <div className="space-y-2">
+                  <div className="space-y-2 max-h-56 overflow-y-auto pr-1">
                     {(selectedMeeting?.decisions ?? []).length > 0 ? (
                       selectedMeeting.decisions.map((d) => (
                         <div key={d.id} className="text-xs p-2 bg-white rounded border border-slate-200 flex items-start justify-between gap-2 shadow-2xs">
-                          <p className="text-slate-800 leading-tight">• {d.text}</p>
+                          <p className="text-slate-800 leading-tight break-words flex-1">• {d.text}</p>
                           <button
                             onClick={() => toggleDecisionConfirmation(d.id)}
-                            className={`text-[10px] px-1.5 py-0.5 rounded font-bold whitespace-nowrap transition-colors ${
+                            className={`text-[10px] px-2 py-1 rounded font-bold whitespace-nowrap transition-colors flex-shrink-0 ${
                               d.review_state === 'confirmed'
                                 ? 'bg-emerald-100 text-emerald-800'
                                 : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
@@ -1153,21 +1155,21 @@ export function App() {
                 </div>
 
                 {/* 3. Risks & Blockers */}
-                <div className="p-4 rounded-xl border border-amber-200 bg-amber-50/30">
+                <div className="p-3.5 sm:p-4 rounded-xl border border-amber-200 bg-amber-50/30">
                   <div className="flex items-center justify-between mb-2">
                     <span className="text-xs font-bold uppercase tracking-wider text-amber-800 flex items-center gap-1">
                       <AlertTriangle className="w-3.5 h-3.5 text-amber-600" />
                       Risks & Dependencies ({(selectedMeeting?.risks ?? []).length})
                     </span>
                   </div>
-                  <div className="space-y-2">
+                  <div className="space-y-2 max-h-56 overflow-y-auto pr-1">
                     {(selectedMeeting?.risks ?? []).length > 0 ? (
                       selectedMeeting.risks.map((r) => (
                         <div key={r.id} className="text-xs p-2 bg-white rounded border border-amber-200 flex items-start justify-between gap-2 shadow-2xs">
-                          <p className="text-amber-900 leading-tight">⚠️ {r.text}</p>
+                          <p className="text-amber-900 leading-tight break-words flex-1">⚠️ {r.text}</p>
                           <button
                             onClick={() => toggleRiskConfirmation(r.id)}
-                            className={`text-[10px] px-1.5 py-0.5 rounded font-bold whitespace-nowrap transition-colors ${
+                            className={`text-[10px] px-2 py-1 rounded font-bold whitespace-nowrap transition-colors flex-shrink-0 ${
                               r.review_state === 'confirmed'
                                 ? 'bg-emerald-100 text-emerald-800'
                                 : 'bg-amber-100 text-amber-800 hover:bg-amber-200'
@@ -1221,8 +1223,8 @@ export function App() {
           </div>
 
           {/* Filters Toolbar */}
-          <div className="p-3.5 bg-slate-50/90 rounded-xl border border-slate-200 mb-6 flex flex-wrap items-center gap-3">
-            <div className="relative flex-1 min-w-[220px]">
+          <div className="p-3 sm:p-3.5 bg-slate-50/90 rounded-xl border border-slate-200 mb-6 flex flex-col md:flex-row items-stretch md:items-center gap-2.5 sm:gap-3">
+            <div className="relative flex-1 min-w-0">
               <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-400">
                 <Search className="w-4 h-4" />
               </div>
@@ -1236,49 +1238,51 @@ export function App() {
               />
             </div>
 
-            <select
-              value={filters.status}
-              onChange={(e) => setFilters((p) => ({ ...p, status: e.target.value }))}
-              className="select-field text-xs py-1.5 w-auto bg-white"
-            >
-              <option value="all">All Statuses</option>
-              {statusOptions.map((st) => (
-                <option key={st} value={st}>{statusLabels[st]}</option>
-              ))}
-            </select>
-
-            <select
-              value={filters.priority}
-              onChange={(e) => setFilters((p) => ({ ...p, priority: e.target.value }))}
-              className="select-field text-xs py-1.5 w-auto bg-white"
-            >
-              <option value="all">All Priorities</option>
-              {priorityOptions.map((p) => (
-                <option key={p} value={p}>{p.toUpperCase()}</option>
-              ))}
-            </select>
-
-            {uniqueOwners.length > 0 && (
+            <div className="flex flex-wrap items-center gap-2">
               <select
-                value={filters.owner}
-                onChange={(e) => setFilters((p) => ({ ...p, owner: e.target.value }))}
-                className="select-field text-xs py-1.5 w-auto bg-white"
+                value={filters.status}
+                onChange={(e) => setFilters((p) => ({ ...p, status: e.target.value }))}
+                className="select-field text-xs py-1.5 flex-1 sm:flex-initial sm:w-auto bg-white"
               >
-                <option value="all">All Owners</option>
-                {uniqueOwners.map((owner) => (
-                  <option key={owner} value={owner}>{owner}</option>
+                <option value="all">All Statuses</option>
+                {statusOptions.map((st) => (
+                  <option key={st} value={st}>{statusLabels[st]}</option>
                 ))}
               </select>
-            )}
 
-            {(filters.search || filters.status !== 'all' || filters.priority !== 'all' || filters.owner !== 'all') && (
-              <button
-                onClick={() => setFilters({ search: '', status: 'all', owner: 'all', priority: 'all' })}
-                className="text-xs text-slate-500 hover:text-slate-800 underline px-2 py-1"
+              <select
+                value={filters.priority}
+                onChange={(e) => setFilters((p) => ({ ...p, priority: e.target.value }))}
+                className="select-field text-xs py-1.5 flex-1 sm:flex-initial sm:w-auto bg-white"
               >
-                Reset Filters
-              </button>
-            )}
+                <option value="all">All Priorities</option>
+                {priorityOptions.map((p) => (
+                  <option key={p} value={p}>{p.toUpperCase()}</option>
+                ))}
+              </select>
+
+              {uniqueOwners.length > 0 && (
+                <select
+                  value={filters.owner}
+                  onChange={(e) => setFilters((p) => ({ ...p, owner: e.target.value }))}
+                  className="select-field text-xs py-1.5 flex-1 sm:flex-initial sm:w-auto bg-white"
+                >
+                  <option value="all">All Owners</option>
+                  {uniqueOwners.map((owner) => (
+                    <option key={owner} value={owner}>{owner}</option>
+                  ))}
+                </select>
+              )}
+
+              {(filters.search || filters.status !== 'all' || filters.priority !== 'all' || filters.owner !== 'all') && (
+                <button
+                  onClick={() => setFilters({ search: '', status: 'all', owner: 'all', priority: 'all' })}
+                  className="text-xs text-slate-500 hover:text-slate-800 underline px-2 py-1 self-center"
+                >
+                  Reset Filters
+                </button>
+              )}
+            </div>
           </div>
 
           {/* Task Items List */}
@@ -1292,17 +1296,17 @@ export function App() {
                 return (
                   <div
                     key={task.id}
-                    className={`p-4 sm:p-5 rounded-xl border transition-all ${
+                    className={`p-3.5 sm:p-5 rounded-xl border transition-all ${
                       isConfirmed 
                         ? 'bg-white border-slate-200 hover:border-slate-300 shadow-2xs' 
                         : 'bg-amber-50/20 border-amber-200/80 hover:border-amber-300'
                     }`}
                   >
-                    <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-4">
+                    <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-3 sm:gap-4">
                       
-                      <div className="space-y-2 flex-1">
+                      <div className="space-y-2 flex-1 min-w-0">
                         <div className="flex flex-wrap items-center gap-2">
-                          <h4 className="font-bold text-slate-900 text-sm sm:text-base">
+                          <h4 className="font-bold text-slate-900 text-sm sm:text-base break-words">
                             {task.title}
                           </h4>
                           <span className={`badge-pill ${
@@ -1313,21 +1317,21 @@ export function App() {
                         </div>
 
                         {task.description && (
-                          <p className="text-xs text-slate-600 leading-relaxed">
+                          <p className="text-xs text-slate-600 leading-relaxed break-words">
                             {task.description}
                           </p>
                         )}
 
                         {/* Accountability Metadata Badges */}
-                        <div className="pt-1 flex flex-wrap items-center gap-2 text-xs">
+                        <div className="pt-1 flex flex-wrap items-center gap-1.5 sm:gap-2 text-xs">
                           {/* Owner */}
-                          <span className={`inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded font-medium ${
+                          <span className={`inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded font-medium max-w-full ${
                             isUnassigned 
                               ? 'bg-rose-50 text-rose-700 border border-rose-200 font-bold' 
                               : 'bg-slate-100 text-slate-700 border border-slate-200'
                           }`}>
-                            <User className="w-3 h-3 text-slate-400" />
-                            {task.owner || 'Unassigned — confirmation needed.'}
+                            <User className="w-3 h-3 text-slate-400 flex-shrink-0" />
+                            <span className="truncate max-w-[260px] sm:max-w-none">{task.owner || 'Unassigned — confirmation needed.'}</span>
                           </span>
 
                           {/* Due Date */}
@@ -1336,8 +1340,8 @@ export function App() {
                               ? 'bg-amber-50 text-amber-800 border border-amber-200' 
                               : 'bg-slate-100 text-slate-700 border border-slate-200'
                           }`}>
-                            <Clock className="w-3 h-3 text-slate-400" />
-                            {task.due_date || 'No due date stated.'}
+                            <Clock className="w-3 h-3 text-slate-400 flex-shrink-0" />
+                            <span>{task.due_date || 'No due date stated.'}</span>
                           </span>
 
                           {/* Priority */}
@@ -1354,28 +1358,28 @@ export function App() {
 
                         {/* Source Excerpt */}
                         {task.source_excerpt && (
-                          <div className="source-quote mt-2">
+                          <div className="source-quote mt-2 break-words">
                             Source note: "{task.source_excerpt}"
                           </div>
                         )}
                       </div>
 
                       {/* Task Action Controls */}
-                      <div className="flex sm:flex-col items-end gap-2 flex-shrink-0 pt-2 sm:pt-0 border-t sm:border-t-0 border-slate-100">
+                      <div className="flex flex-row sm:flex-col items-center sm:items-end justify-between sm:justify-start gap-2 flex-shrink-0 pt-2.5 sm:pt-0 border-t sm:border-t-0 border-slate-100 w-full sm:w-auto">
                         <select
                           value={task.status}
                           onChange={(e) => updateTaskStatus(task.id, e.target.value)}
-                          className="select-field text-xs py-1.5 w-32 bg-white"
+                          className="select-field text-xs py-1.5 w-auto flex-1 sm:flex-initial sm:w-32 bg-white"
                         >
                           {statusOptions.map((st) => (
                             <option key={st} value={st}>{statusLabels[st]}</option>
                           ))}
                         </select>
 
-                        <div className="flex items-center gap-1.5">
+                        <div className="flex items-center gap-1.5 flex-shrink-0">
                           <button
                             onClick={() => handleOpenEditModal(task)}
-                            className="text-xs px-2.5 py-1 rounded-md border border-slate-200 bg-white text-slate-700 hover:bg-slate-50 font-medium flex items-center gap-1 transition-colors shadow-2xs"
+                            className="text-xs px-2.5 py-1.5 sm:py-1 rounded-md border border-slate-200 bg-white text-slate-700 hover:bg-slate-50 font-medium flex items-center gap-1 transition-colors shadow-2xs"
                             title="Edit Task"
                           >
                             <Edit2 className="w-3 h-3 text-slate-500" />
@@ -1384,7 +1388,7 @@ export function App() {
 
                           <button
                             onClick={() => toggleTaskConfirmation(task.id)}
-                            className={`text-xs px-2.5 py-1 rounded-md border font-semibold transition-colors shadow-2xs ${
+                            className={`text-xs px-2.5 py-1.5 sm:py-1 rounded-md border font-semibold transition-colors shadow-2xs ${
                               isConfirmed
                                 ? 'bg-emerald-50 text-emerald-800 border-emerald-200'
                                 : 'bg-slate-100 text-slate-700 border-slate-200 hover:bg-slate-200'
@@ -1415,14 +1419,14 @@ export function App() {
 
       {/* ── Modal for Adding Manual Action Item ──────────────────────────── */}
       {showNewTaskModal && (
-        <div className="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-          <div className="scalezix-card bg-white w-full max-w-lg p-6 animate-in fade-in duration-200">
-            <div className="flex items-center justify-between pb-3 border-b border-slate-100 mb-4">
+        <div className="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 flex items-center justify-center p-3 sm:p-4">
+          <div className="scalezix-card bg-white w-full max-w-lg p-5 sm:p-6 max-h-[92vh] flex flex-col overflow-hidden animate-in fade-in duration-200 shadow-2xl">
+            <div className="flex items-center justify-between pb-3 border-b border-slate-100 mb-4 flex-shrink-0">
               <h3 className="text-base font-bold text-slate-900">Add Accountable Action Item</h3>
-              <button onClick={() => setShowNewTaskModal(false)} className="text-slate-400 hover:text-slate-600">✕</button>
+              <button onClick={() => setShowNewTaskModal(false)} className="text-slate-400 hover:text-slate-600 p-1">✕</button>
             </div>
 
-            <form onSubmit={handleCreateManualTask} className="space-y-4">
+            <form onSubmit={handleCreateManualTask} className="space-y-3.5 sm:space-y-4 overflow-y-auto pr-1 flex-1">
               <div>
                 <label className="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1">
                   Task Title *
@@ -1437,7 +1441,7 @@ export function App() {
                 />
               </div>
 
-              <div className="grid grid-cols-2 gap-3">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <div>
                   <label className="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1">
                     Task Owner
@@ -1464,7 +1468,7 @@ export function App() {
                 </div>
               </div>
 
-              <div className="grid grid-cols-2 gap-3">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <div>
                   <label className="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1">
                     Priority
@@ -1472,7 +1476,7 @@ export function App() {
                   <select
                     value={newTaskPriority}
                     onChange={(e) => setNewTaskPriority(e.target.value)}
-                    className="select-field text-xs"
+                    className="select-field text-xs w-full"
                   >
                     <option value="high">High</option>
                     <option value="medium">Medium</option>
@@ -1494,17 +1498,17 @@ export function App() {
                 />
               </div>
 
-              <div className="pt-3 border-t border-slate-100 flex items-center justify-end gap-2">
+              <div className="pt-3 border-t border-slate-100 flex flex-col-reverse sm:flex-row items-stretch sm:items-center justify-end gap-2 flex-shrink-0">
                 <button
                   type="button"
                   onClick={() => setShowNewTaskModal(false)}
-                  className="btn-secondary text-xs"
+                  className="btn-secondary text-xs w-full sm:w-auto text-center"
                 >
                   Cancel
                 </button>
                 <button
                   type="submit"
-                  className="btn-primary text-xs"
+                  className="btn-primary text-xs w-full sm:w-auto text-center"
                 >
                   Save Action Item
                 </button>
@@ -1516,17 +1520,17 @@ export function App() {
 
       {/* ── Edit Task Modal ────────────────────────────────────────────── */}
       {editingTask && (
-        <div className="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-          <div className="scalezix-card bg-white w-full max-w-lg p-6 animate-in fade-in duration-200 shadow-2xl">
-            <div className="flex items-center justify-between pb-3 border-b border-slate-100 mb-4">
+        <div className="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 flex items-center justify-center p-3 sm:p-4">
+          <div className="scalezix-card bg-white w-full max-w-lg p-5 sm:p-6 max-h-[92vh] flex flex-col overflow-hidden animate-in fade-in duration-200 shadow-2xl">
+            <div className="flex items-center justify-between pb-3 border-b border-slate-100 mb-4 flex-shrink-0">
               <div className="flex items-center gap-2">
                 <Edit2 className="w-4 h-4 text-emerald-600" />
                 <h3 className="text-base font-bold text-slate-900">Edit Action Item</h3>
               </div>
-              <button onClick={() => setEditingTask(null)} className="text-slate-400 hover:text-slate-600 text-sm">✕</button>
+              <button onClick={() => setEditingTask(null)} className="text-slate-400 hover:text-slate-600 p-1">✕</button>
             </div>
 
-            <form onSubmit={handleSaveEditedTask} className="space-y-4">
+            <form onSubmit={handleSaveEditedTask} className="space-y-3.5 sm:space-y-4 overflow-y-auto pr-1 flex-1">
               <div>
                 <label className="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1">
                   Task Title *
@@ -1540,7 +1544,7 @@ export function App() {
                 />
               </div>
 
-              <div className="grid grid-cols-2 gap-3">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <div>
                   <label className="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1">
                     Assignee / Owner
@@ -1569,7 +1573,7 @@ export function App() {
                 </div>
               </div>
 
-              <div className="grid grid-cols-2 gap-3">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <div>
                   <label className="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1">
                     Priority
@@ -1577,7 +1581,7 @@ export function App() {
                   <select
                     value={editTaskPriority}
                     onChange={(e) => setEditTaskPriority(e.target.value)}
-                    className="select-field text-xs"
+                    className="select-field text-xs w-full"
                   >
                     <option value="high">High Priority</option>
                     <option value="medium">Medium Priority</option>
@@ -1592,7 +1596,7 @@ export function App() {
                   <select
                     value={editTaskStatus}
                     onChange={(e) => setEditTaskStatus(e.target.value)}
-                    className="select-field text-xs"
+                    className="select-field text-xs w-full"
                   >
                     {statusOptions.map((st) => (
                       <option key={st} value={st}>{statusLabels[st]}</option>
@@ -1613,17 +1617,17 @@ export function App() {
                 />
               </div>
 
-              <div className="pt-3 border-t border-slate-100 flex items-center justify-end gap-2">
+              <div className="pt-3 border-t border-slate-100 flex flex-col-reverse sm:flex-row items-stretch sm:items-center justify-end gap-2 flex-shrink-0">
                 <button
                   type="button"
                   onClick={() => setEditingTask(null)}
-                  className="btn-secondary text-xs"
+                  className="btn-secondary text-xs w-full sm:w-auto text-center"
                 >
                   Cancel
                 </button>
                 <button
                   type="submit"
-                  className="btn-primary text-xs"
+                  className="btn-primary text-xs w-full sm:w-auto text-center"
                 >
                   Update Action Item
                 </button>
@@ -1634,14 +1638,14 @@ export function App() {
       )}
 
       {/* ── Scalezix Footer ─────────────────────────────────────────────── */}
-      <footer className="mt-16 bg-slate-900 border-t border-slate-800 text-slate-400 py-6 text-xs">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <footer className="mt-12 sm:mt-16 bg-slate-900 border-t border-slate-800 text-slate-400 py-6 text-xs">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-4 text-center md:text-left">
           <div className="flex items-center gap-2">
             <span className="font-extrabold text-white">SCALEZIX</span>
             <span className="text-slate-600">|</span>
             <span>Client Meeting-to-Action Tracker</span>
           </div>
-          <div className="flex items-center gap-6 text-[11px]">
+          <div className="flex flex-wrap items-center justify-center md:justify-end gap-3 sm:gap-6 text-[11px]">
             <span>Non-Negotiable Accuracy Protocol</span>
             <span>Zero-Hallucination Owner & Due-Date Rules</span>
             <span>© 2026 Scalezix Ventures LLP</span>
